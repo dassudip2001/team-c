@@ -11,6 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // php artisan make:model Employee -m 
+        
+        
+        /* This code is creating a database table named "employees" with columns for various employee
+        information such as first name, last name, email, date of birth, education, gender, company,
+        packages, experience, and timestamps for when the record was created and updated. The
+        `Schema::create` method is used to create the table, and the `Blueprint` object is used to
+        define the table's columns and their data types. */
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('fast_name',100);

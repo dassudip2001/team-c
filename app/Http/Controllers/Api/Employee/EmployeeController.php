@@ -10,9 +10,12 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    //  php artisan make:controller Api/Employee/EmployeeController -r 
     public function index()
     {
-        //
+        // show the all employee in this format
+        $emp=Employee::get();
+        return response()->json($emp, 200, $headers);
     }
 
     /**
