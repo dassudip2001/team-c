@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api\Employee;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -10,12 +10,10 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    //  php artisan make:controller Api/Employee/EmployeeController -r 
     public function index()
     {
-        // show the all employee in this format
-        $emp=Employee::get();
-        return response()->json($emp, 200, $headers);
+        $data=employee::all();
+        return response()->json($data,200);
     }
 
     /**
