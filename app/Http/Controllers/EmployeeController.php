@@ -20,7 +20,7 @@ class EmployeeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(EmployeeCreateRequest $request)
+    public function create(Request $request)
     {
         $emp=new employee();
         $emp->fast_name=$request['fast_name'];
@@ -58,7 +58,8 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $emp=employee::find($id);
+        return response()->json($emp,200);
     }
 
     /**
@@ -74,7 +75,24 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $emp= employee::find($id);
+        $emp->fast_name=$request['fast_name'];
+        $emp->last_name=$request['last_name'];
+        $emp->email=$request['email'];
+        $emp->date_of_birth=$request['date_of_birth'];
+        $emp->education=$request['education'];
+        $emp->gender=$request['gender'];
+        $emp->company=$request['company'];
+        $emp->packages=$request['packages'];
+        $emp->experience=$request['experience'];
+        try {
+            $emp->save();
+            return response()->json($emp, 200, );
+            //code...
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 
     /**
@@ -82,6 +100,7 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        employee::find($id);
+        return response()->json("recode delete successfully");
     }
 }

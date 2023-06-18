@@ -22,5 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'emp'], function () {
     Route::get('employee',[EmployeeController::class,'index']);
+    Route::post('employee',[EmployeeController::class,'create']);
+    Route::get('employee/{id}',[EmployeeController::class,'show']);
+    Route::put('employee/{id}',[EmployeeController::class,'update']);
+    Route::delete('employee/{id}',[EmployeeController::class,'destroy']);
+
 
 });
