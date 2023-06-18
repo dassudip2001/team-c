@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeCreateRequest;
 use App\Models\employee;
 use Illuminate\Http\Request;
 
@@ -19,9 +20,29 @@ class EmployeeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(EmployeeCreateRequest $request)
     {
-        //
+        $emp=new employee();
+        $emp->fast_name=$request['fast_name'];
+        $emp->last_name=$request['last_name'];
+        $emp->email=$request['email'];
+        $emp->date_of_birth=$request['date_of_birth'];
+        $emp->education=$request['education'];
+        $emp->gender=$request['gender'];
+        $emp->company=$request['company'];
+        $emp->packages=$request['packages'];
+        $emp->experience=$request['experience'];
+        try {
+            $emp->save();
+             return response()->json($emp, 200, );
+            //code...
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+
+
+
     }
 
     /**
